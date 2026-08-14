@@ -1,0 +1,47 @@
+<div class="todo-container">
+
+  <h1>Todo List</h1>
+
+  <div class="add-task">
+    <input
+      type="text"
+      placeholder="Enter a task..."
+      [(ngModel)]="newTask"
+      (keyup.enter)="addTask()"
+    />
+
+    <button (click)="addTask()">Add</button>
+  </div>
+
+  <div class="task-list">
+
+    @if (tasks.length === 0) {
+      <p class="empty-message">No tasks yet.</p>
+    }
+
+    @for (task of tasks; track task.id) {
+      <div class="task">
+
+        <input
+          type="checkbox"
+          [checked]="task.completed"
+          (change)="toggleTask(task)"
+        />
+
+        <span [class.completed]="task.completed">
+          {{ task.title }}
+        </span>
+
+        <button
+          class="delete-button"
+          (click)="deleteTask(task.id)"
+        >
+          Delete
+        </button>
+
+      </div>
+    }
+
+  </div>
+
+</div>
