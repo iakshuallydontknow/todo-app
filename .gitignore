@@ -3,3 +3,5 @@ __pycache__/
 .venv/
 .env
 dist/
+# Python virtual environment
+backend/.venv/
