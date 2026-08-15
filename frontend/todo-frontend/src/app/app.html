@@ -1,40 +1,40 @@
 <div class="todo-container">
 
-  <h1>Todo List</h1>
+  <h1>My Todo List</h1>
 
   <div class="add-task">
     <input
       type="text"
-      placeholder="Enter a task..."
-      [(ngModel)]="newTask"
-      (keyup.enter)="addTask()"
+      [(ngModel)]="newTodo"
+      placeholder="What needs to be done?"
+      (keyup.enter)="addTodo()"
     />
 
-    <button (click)="addTask()">Add</button>
+    <button (click)="addTodo()">Add</button>
   </div>
 
   <div class="task-list">
 
-    @if (tasks.length === 0) {
+    @if (todos.length === 0) {
       <p class="empty-message">No tasks yet.</p>
     }
 
-    @for (task of tasks; track task.id) {
+    @for (todo of todos; track todo.id) {
       <div class="task">
 
         <input
           type="checkbox"
-          [checked]="task.completed"
-          (change)="toggleTask(task)"
+          [checked]="todo.completed"
+          (change)="toggleTodo(todo)"
         />
 
-        <span [class.completed]="task.completed">
-          {{ task.title }}
+        <span [class.completed]="todo.completed">
+          {{ todo.title }}
         </span>
 
         <button
           class="delete-button"
-          (click)="deleteTask(task.id)"
+          (click)="deleteTodo(todo.id)"
         >
           Delete
         </button>
